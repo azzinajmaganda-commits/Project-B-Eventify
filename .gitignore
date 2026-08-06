@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django development database
+db.sqlite3
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Cursor
+.cursor/
+
+# Static collection
+staticfiles/
+
+# Test and coverage files
+.coverage
+htmlcov/
+.pytest_cache/
