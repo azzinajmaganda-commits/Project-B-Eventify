@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Admin Access Denied | Eventify
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/admin_access.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="access-page">
+
+    <div class="access-card denied-card">
+
+        <div class="access-icon denied-icon">
+            ×
+        </div>
+
+        <p class="access-eyebrow denied-eyebrow">
+            ADMIN ACCESS
+        </p>
+
+        <h1>
+            Sorry, Access Denied
+        </h1>
+
+        <p class="access-description">
+            You are not allowed to enter as an admin.
+            Your request for administrator access was not approved.
+        </p>
+
+        <div class="access-notice denied-notice">
+
+            <span class="notice-label">
+                ACCESS STATUS
+            </span>
+
+            <strong>
+                Administrator access was not approved
+            </strong>
+
+            <p>
+                Please try again with a different role.
+                Thanks for cooperating!
+            </p>
+
+        </div>
+
+        <div class="access-actions">
+
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="access-primary-button"
+                >
+                    Sign Out & Return to Login
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

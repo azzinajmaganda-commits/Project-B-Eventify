@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    {{ page_title }} | Event Platform
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'css/events.css' %}"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="event-form-page">
+
+    <div class="form-header">
+        <div>
+            <p class="eyebrow">EVENT MANAGEMENT</p>
+
+            <h1>{{ page_title }}</h1>
+
+            <p class="page-subtitle">
+                {% if event %}
+                    Update your event details and replace the poster if needed.
+                {% else %}
+                    Create a new event and share it with your audience.
+                {% endif %}
+            </p>
+        </div>
+
+        <a href="{% url 'event_list' %}" class="back-link">
+            ← Back to My Events
+        </a>
+    </div>
+
+
+    <div class="event-form-card">
+
+        <form
+            method="post"
+            enctype="multipart/form-data"
+            novalidate
+        >
+
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            <div class="form-section">
+
+                <div class="section-heading">
+                    <h2>Event Information</h2>
+
+                    <p>
+                        Tell attendees what your event is about.
+                    </p>
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+
+                        <label for="{{ form.title.id_for_label }}">
+                            Event Title
+                        </label>
+
+                        {{ form.title }}
+
+                        {% for error in form.title.errors %}
+                            <div class="field-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label for="{{ form.description.id_for_label }}">
+                            Description
+                        </label>
+
+                        {{ form.description }}
+
+                        {% for error in form.description.errors %}
+                            <div class="field-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="{{ form.location.id_for_label }}">
+                            Location
+                        </label>
+
+                        {{ form.location }}
+
+                        {% for error in form.location.errors %}
+                            <div class="field-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="{{ form.event_date.id_for_label }}">
+                            Date & Time
+                        </label>
+
+                        {{ form.event_date }}
+
+                        {% for error in form.event_date.errors %}
+                            <div class="field-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="{{ form.ticket_price.id_for_label }}">
+                            Ticket Price
+                        </label>
+
+                        {{ form.ticket_price }}
+
+                        {% for error in form.ticket_price.errors %}
+                            <div class="field-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="{{ form.max_tickets.id_for_label }}">
+                            Maximum Tickets
+                        </label>
+
+                        {{ form.max_tickets }}
+
+                        {% for error in form.max_tickets.errors %}
+                            <div class="field-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="section-heading">
+                    <h2>Event Poster</h2>
+
+                    <p>
+                        Upload a JPG, JPEG, PNG, or WEBP image.
+                        Maximum file size is 5 MB.
+                    </p>
+                </div>
+
+
+                {% if event and event.poster %}
+
+                    <div class="current-poster">
+
+                        <img
+                            src="{{ event.poster.url }}"
+                            alt="{{ event.title }}"
+                        >
+
+                        <div>
+                            <span>Current poster</span>
+
+                            <p>
+                                Upload a new image below to replace it.
+                            </p>
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+<div class="poster-upload">
+
+    <label
+        for="{{ form.poster.id_for_label }}"
+        class="poster-upload-label"
+    >
+        <span class="poster-upload-icon">
+            📥
+        </span>
+
+        <span class="poster-upload-text">
+            <strong>Choose Event Poster</strong></span></label>
+            <small>
+                Click to browse or drop an image here
+            </small>
+        </span>
+
+        <span class="poster-upload-action">
+            📂
+        </span>
+    </label>
+
+    {{ form.poster }}
+
+    <div
+        class="poster-preview"
+        id="posterPreview"
+        hidden
+    >
+    
+    <div class="poster-preview-image">
+        <img
+            id="posterPreviewImage"
+            src=""
+            alt="Selected event poster preview"
+            style="width: 700px; height: 600px; object-fit: cover; border-radius: 12px;"
+        >
+    </div>
+    
+
+        <div class="poster-preview-info">
+
+            <span class="poster-selected-badge">
+                ✓ Poster selected
+            </span>
+
+            <strong id="posterFileName">
+                Poster image
+            </strong>
+
+            <span>
+                Your poster is ready to upload.
+            </span>
+
+        </div>
+    </div>
+
+</div>
+            </div>
+
+
+            <div class="form-actions">
+
+                <a
+                    href="{% url 'event_list' %}"
+                    class="secondary-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    {{ submit_label }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% block extra_js %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const posterInput = document.querySelector(
+        '.poster-upload input[type="file"]'
+    );
+
+    const preview = document.getElementById(
+        "posterPreview"
+    );
+
+    const previewImage = document.getElementById(
+        "posterPreviewImage"
+    );
+
+    const fileName = document.getElementById(
+        "posterFileName"
+    );
+
+    if (!posterInput) {
+        return;
+    }
+
+    posterInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) {
+            preview.hidden = true;
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            preview.hidden = true;
+            return;
+        }
+
+        fileName.textContent = file.name;
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            previewImage.src = event.target.result;
+
+            preview.hidden = false;
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+});
+</script>
+
+{% endblock %}
+
+
+{% endblock %}

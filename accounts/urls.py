@@ -2,15 +2,21 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from .forms import EmailAuthenticationForm
-from .views import dashboard_view, register_view
+from .views import (
+    admin_access_pending_view,
+    dashboard_view,
+    register_view,
+)
 
 
 urlpatterns = [
+
     path(
         "register/",
         register_view,
         name="register",
     ),
+
     path(
         "login/",
         auth_views.LoginView.as_view(
@@ -20,14 +26,22 @@ urlpatterns = [
         ),
         name="login",
     ),
+
     path(
         "logout/",
         auth_views.LogoutView.as_view(),
         name="logout",
     ),
+
     path(
         "dashboard/",
         dashboard_view,
         name="dashboard",
+    ),
+
+    path(
+        "admin-access-pending/",
+        admin_access_pending_view,
+        name="admin_access_pending",
     ),
 ]

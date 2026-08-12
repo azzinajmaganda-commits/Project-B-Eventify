@@ -1,0 +1,517 @@
+/* =========================================================
+   PREMIUM ADMIN ACCESS PAGES
+   Pending + Denied
+   ========================================================= */
+
+   .access-page {
+    min-height: 72vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.access-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+
+    padding: 52px 50px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(250, 249, 255, 0.98)
+        );
+
+    box-shadow:
+        0 35px 90px rgba(25, 23, 55, 0.12),
+        0 5px 18px rgba(25, 23, 55, 0.05);
+
+    animation: accessCardAppear 0.55s ease both;
+}
+
+.access-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    top: -210px;
+    right: -130px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(114, 87, 255, 0.13),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+.access-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    bottom: -190px;
+    left: -130px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(198, 169, 110, 0.10),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.access-icon {
+    position: relative;
+    z-index: 1;
+
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto 22px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 24px;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    box-shadow:
+        0 18px 38px rgba(114, 87, 255, 0.20);
+}
+
+.pending-icon {
+    background:
+        linear-gradient(
+            145deg,
+            #8065ff,
+            #5e41e2
+        );
+
+    color: white;
+}
+
+.denied-icon {
+    background:
+        linear-gradient(
+            145deg,
+            #37313f,
+            #1d1a22
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 18px 38px rgba(35, 30, 40, 0.20);
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.access-eyebrow {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 10px;
+
+    color: #7156ed;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2.8px;
+}
+
+.denied-eyebrow {
+    color: #77717e;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.access-card h1 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    color: #181923;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(34px, 5vw, 48px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.access-description {
+    position: relative;
+    z-index: 1;
+
+    max-width: 510px;
+
+    margin: 16px auto 0;
+
+    color: #777985;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.access-status {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 28px;
+
+    padding: 17px 20px;
+
+    text-align: left;
+
+    border-radius: 16px;
+
+    background: #faf9ff;
+
+    border: 1px solid #ebe8fa;
+}
+
+.access-status strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #292936;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.access-status span:not(.status-dot) {
+    display: block;
+
+    color: #9697a2;
+
+    font-size: 11px;
+}
+
+.status-dot {
+    flex-shrink: 0;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #8065ff;
+
+    box-shadow:
+        0 0 0 5px rgba(128, 101, 255, 0.10);
+}
+
+
+/* =========================================================
+   NOTICE
+   ========================================================= */
+
+.access-notice {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 16px;
+
+    padding: 22px;
+
+    text-align: left;
+
+    border: 1px solid rgba(114, 87, 255, 0.10);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf9ff
+        );
+}
+
+.notice-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #a0a0ab;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.access-notice strong {
+    display: block;
+
+    color: #252633;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.access-notice p {
+    margin: 7px 0 0;
+
+    color: #858692;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   DENIED NOTICE
+   ========================================================= */
+
+.denied-notice {
+    border-color: rgba(70, 60, 75, 0.10);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf9fb
+        );
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.access-actions {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 27px;
+}
+
+.access-actions form {
+    margin: 0;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.access-primary-button,
+.access-secondary-button {
+    min-height: 48px;
+
+    padding: 0 25px;
+
+    border-radius: 13px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Primary */
+
+.access-primary-button {
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7257ff,
+            #6040df
+        );
+
+    color: white;
+
+    box-shadow:
+        0 12px 28px rgba(114, 87, 255, 0.25);
+}
+
+.access-primary-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 17px 34px rgba(114, 87, 255, 0.32);
+}
+
+
+/* Secondary */
+
+.access-secondary-button {
+    border: 1px solid #ddd9ef;
+
+    background: #ffffff;
+
+    color: #5e5968;
+
+    box-shadow:
+        0 8px 20px rgba(25, 23, 45, 0.06);
+}
+
+.access-secondary-button:hover {
+    transform: translateY(-2px);
+
+    border-color: #cfc7ee;
+
+    background: #faf9ff;
+
+    color: #6249df;
+
+    box-shadow:
+        0 13px 27px rgba(25, 23, 45, 0.09);
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes accessCardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .access-page {
+        min-height: 65vh;
+
+        padding: 35px 15px;
+    }
+
+    .access-card {
+        padding: 40px 23px;
+
+        border-radius: 24px;
+    }
+
+    .access-icon {
+        width: 68px;
+        height: 68px;
+
+        border-radius: 21px;
+
+        font-size: 25px;
+    }
+
+    .access-card h1 {
+        font-size: 34px;
+    }
+
+    .access-description {
+        font-size: 12px;
+    }
+
+    .access-status {
+        padding: 15px;
+    }
+
+    .access-notice {
+        padding: 18px;
+    }
+
+    .access-primary-button,
+    .access-secondary-button {
+        width: 100%;
+    }
+
+}

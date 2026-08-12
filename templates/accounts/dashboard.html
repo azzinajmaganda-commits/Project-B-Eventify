@@ -1,57 +1,331 @@
 {% extends "base.html" %}
 
-{% block title %}
-    Dashboard | Event Platform
+{% load static %}
+
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/dashboard.css' %}"
+>
+
 {% endblock %}
 
+
+{% block title %}
+Dashboard | Eventify
+{% endblock %}
+
+
 {% block content %}
-<section class="dashboard-card">
-    <p class="eyebrow">
-        Account dashboard
-    </p>
 
-    <h1>
-        Welcome, {{ user.full_name }}
-    </h1>
+<div class="dashboard-shell">
 
-    <p>
-        You are successfully logged in.
-    </p>
+    <section class="dashboard-card">
 
-    <div class="account-details">
-        <div class="detail-row">
-            <span>Name</span>
-            <strong>{{ user.get_full_name }}</strong>
+
+        <p class="dashboard-eyebrow">
+            YOUR ACCOUNT
+        </p>
+
+
+        <h1>
+            Welcome, {{ user.first_name|default:user.username }}
+        </h1>
+
+
+        <p class="dashboard-intro">
+            Your Eventify account is ready.
+            Manage your profile and experiences from one place.
+        </p>
+
+
+        <div class="account-details">
+
+
+            <div class="account-row">
+
+                <span>
+                    Name
+                </span>
+
+                <strong>
+                    {{ user.get_full_name|default:user.username }}
+                </strong>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span>
+                    Email
+                </span>
+
+                <strong>
+                    {{ user.email }}
+                </strong>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span>
+                    Role
+                </span>
+
+                <strong>
+                    {{ user.get_role_display|default:user.role|title }}
+                </strong>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span>
+                    Account created
+                </span>
+
+                <strong>
+                    {{ user.date_joined|date:"F d, Y" }}
+                </strong>
+
+            </div>
+
+
         </div>
 
-        <div class="detail-row">
-            <span>Email</span>
-            <strong>{{ user.email }}</strong>
+
+        <!-- ================================================= -->
+        <!-- ATTENDEE -->
+        <!-- ================================================= -->
+
+        {% if user.role == "attendee" %}
+
+        <div class="event-management-box">
+
+
+            <div class="event-management-content">
+
+                <div class="event-management-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <span class="event-management-label">
+                        EXPLORE EVENTS
+                    </span>
+
+
+                    <h2>
+                        Discover upcoming experiences.
+                    </h2>
+
+
+                    <p>
+                        Explore events created by our organizers
+                        and find experiences that interest you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="event-management-actions">
+
+                <a
+                    href="{% url 'event_list' %}"
+                    class="event-management-button"
+                >
+
+                    <span>
+                        Browse All Events
+                    </span>
+
+                    <span class="event-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+
         </div>
 
-        <div class="detail-row">
-            <span>Role</span>
-            <strong>{{ user.get_role_display }}</strong>
+        {% endif %}
+
+
+        <!-- ================================================= -->
+        <!-- ORGANIZER -->
+        <!-- ================================================= -->
+
+        {% if user.role == "organizer" %}
+
+        <div class="event-management-box">
+
+
+            <div class="event-management-content">
+
+                <div class="event-management-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <span class="event-management-label">
+                        EVENT MANAGEMENT
+                    </span>
+
+
+                    <h2>
+                        Create and manage your events.
+                    </h2>
+
+
+                    <p>
+                        Bring your ideas to life, organize your events,
+                        and manage every experience from one elegant workspace.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="event-management-actions">
+
+
+                <a
+                    href="{% url 'event_list' %}"
+                    class="event-management-button"
+                >
+
+                    <span>
+                        View All Events
+                    </span>
+
+                    <span class="event-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{% url 'event_create' %}"
+                    class="event-management-button event-create-button"
+                >
+
+                    <span>
+                        + Create Event
+                    </span>
+
+                    <span class="event-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
         </div>
 
-        <div class="detail-row">
-            <span>Account created</span>
-            <strong>{{ user.date_joined|date:"F j, Y" }}</strong>
-        </div>
-    </div>
+        {% endif %}
 
-    {% if user.role == "admin" %}
-        <div class="role-message">
-            You have administrator access.
+
+        <!-- ================================================= -->
+        <!-- APPROVED ADMIN -->
+        <!-- ================================================= -->
+
+        {% if user.role == "admin" and user.admin_access_status == "approved" %}
+
+        <div class="event-management-box">
+
+
+            <div class="event-management-content">
+
+                <div class="event-management-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <span class="event-management-label">
+                        ADMINISTRATION
+                    </span>
+
+
+                    <h2>
+                        Manage the Eventify platform.
+                    </h2>
+
+
+                    <p>
+                        View all events and access the administration
+                        area to manage users, organizers and platform data.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="event-management-actions">
+
+
+                <a
+                    href="{% url 'event_list' %}"
+                    class="event-management-button"
+                >
+
+                    <span>
+                        View All Events
+                    </span>
+
+                    <span class="event-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="/admin/"
+                    class="event-management-button event-create-button"
+                >
+
+                    <span>
+                        Admin Dashboard
+                    </span>
+
+                    <span class="event-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
         </div>
-    {% elif user.role == "organizer" %}
-        <div class="role-message">
-            You will be able to create and manage events.
-        </div>
-    {% elif user.role == "attendee" %}
-        <div class="role-message">
-            You will be able to browse events and book tickets.
-        </div>
-    {% endif %}
-</section>
+
+        {% endif %}
+
+
+    </section>
+
+</div>
+
 {% endblock %}

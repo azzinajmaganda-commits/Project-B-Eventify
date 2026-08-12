@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/events.css' %}"
+>
+
+{% endblock %}
+
+{% block title %}
+My Events | Eventify
+{% endblock %}
+
+{% block content %}
+
+<div class="events-page">
+
+    <header class="events-header">
+
+        <div>
+
+            <p class="events-eyebrow">
+                EVENTIFY STUDIO
+            </p>
+
+            <h1>
+                All Events
+            </h1>
+
+            <p class="events-subtitle">
+                Explore all experiences created by our
+                Eventify community.
+            </p>
+
+        </div>
+
+        {% if request.user.role == "organizer" %}
+
+            <a
+                href="{% url 'event_create' %}"
+                class="primary-button"
+            >
+                + Create New Event
+            </a>
+
+        {% endif %}
+
+    </header>
+
+    {% if events %}
+
+        <div class="events-grid">
+
+            {% for event in events %}
+
+                <article class="event-card">
+
+                    {% if event.poster %}
+
+                        <div class="event-poster">
+
+                            <img
+                                src="{{ event.poster.url }}"
+                                alt="{{ event.title }}"
+                            >
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="event-poster event-poster-placeholder">
+                            No poster
+                        </div>
+
+                    {% endif %}
+
+                    <div class="event-card-content">
+
+                        <div class="event-card-top">
+
+                            {% if event.created_by == request.user %}
+
+                                <span class="event-status">
+                                    YOUR EVENT
+                                </span>
+
+                            {% else %}
+
+                                <span class="event-status">
+                                    EVENT
+                                </span>
+
+                            {% endif %}
+
+                            <span class="event-date">
+                                {{ event.event_date|date:"M d, Y · g:i A" }}
+                            </span>
+
+                        </div>
+
+                        <h2>
+                            {{ event.title }}
+                        </h2>
+
+                        <p class="event-description">
+                            {{ event.description|truncatewords:22 }}
+                        </p>
+
+                        <div class="event-details">
+
+                            <div class="event-detail">
+
+                                <span class="detail-label">
+                                    Created By
+                                </span>
+
+                                <strong>
+                                    {{ event.created_by.full_name }}
+                                </strong>
+
+                            </div>
+
+                            <div class="event-detail">
+
+                                <span class="detail-label">
+                                    Location
+                                </span>
+
+                                <strong>
+                                    {{ event.location }}
+                                </strong>
+
+                            </div>
+
+                            <div class="event-detail">
+
+                                <span class="detail-label">
+                                    Ticket Price
+                                </span>
+
+                                <strong>
+
+                                    {% if event.ticket_price == 0 %}
+
+                                        Free
+
+                                    {% else %}
+
+                                        ${{ event.ticket_price }}
+
+                                    {% endif %}
+
+                                </strong>
+
+                            </div>
+
+                            <div class="event-detail">
+
+                                <span class="detail-label">
+                                    Maximum Tickets
+                                </span>
+
+                                <strong>
+                                    {{ event.max_tickets }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        {% if request.user.role == "admin" and request.user.admin_access_status == "approved" or event.created_by == request.user %}
+
+                            <div class="event-actions">
+
+                                <a
+                                    href="{% url 'event_edit' event.pk %}"
+                                    class="secondary-button"
+                                >
+                                    Edit
+                                </a>
+
+                                <a
+                                    href="{% url 'event_delete' event.pk %}"
+                                    class="danger-button"
+                                >
+                                    Delete
+                                </a>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <section class="empty-events">
+
+            <div class="empty-icon">
+                ✦
+            </div>
+
+            <h2>
+                No Events Yet
+            </h2>
+
+            <p>
+                There are currently no events available.
+                Create the first experience and bring it to life.
+            </p>
+
+            {% if request.user.role == "organizer" %}
+
+                <a
+                    href="{% url 'event_create' %}"
+                    class="primary-button"
+                >
+                    + Create Your First Event
+                </a>
+
+            {% endif %}
+
+        </section>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

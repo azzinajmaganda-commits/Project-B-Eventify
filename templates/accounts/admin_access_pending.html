@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Admin Access Pending | Eventify
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/admin_access.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="access-page">
+
+    <div class="access-card pending-card">
+
+        <div class="access-icon pending-icon">
+            ⏳
+        </div>
+
+        <p class="access-eyebrow">
+            ADMIN ACCESS
+        </p>
+
+        <h1>
+            Access Request Pending
+        </h1>
+
+        <p class="access-description">
+            Your account has been registered as an administrator,
+            but access to the administration area requires approval
+            from the existing administrator.
+        </p>
+
+        <div class="access-status pending-status">
+
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>
+                    Approval Required
+                </strong>
+
+                <span>
+                    Your request is currently being reviewed.
+                </span>
+            </div>
+
+        </div>
+
+        <div class="access-notice">
+
+            <span class="notice-label">
+                REQUEST STATUS
+            </span>
+
+            <strong>
+                Please wait for approval
+            </strong>
+
+            <p>
+                You cannot access the administration dashboard
+                until the existing administrator approves your request.
+            </p>
+
+        </div>
+
+        <div class="access-actions">
+
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="access-secondary-button"
+                >
+                    Sign Out
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

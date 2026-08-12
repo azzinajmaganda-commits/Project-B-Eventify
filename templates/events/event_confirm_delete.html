@@ -1,0 +1,130 @@
+```html
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Delete {{ event.title }} | Event Platform
+{% endblock %}
+
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'css/events.css' %}"
+>
+{% endblock %}
+```
+
+
+{% block content %}
+
+<section class="delete-page">
+
+    <div class="delete-card">
+
+        <div class="delete-icon">
+            !
+        </div>
+
+        <p class="eyebrow">
+            DELETE EVENT
+        </p>
+
+        <h1>
+            Delete this event?
+        </h1>
+
+        <p class="delete-description">
+            You are about to permanently delete
+            <strong>{{ event.title }}</strong>.
+            This action cannot be undone.
+        </p>
+
+
+        {% if event.poster %}
+            <div class="delete-poster">
+                <img
+                    src="{{ event.poster.url }}"
+                    alt="{{ event.title }}"
+                >
+            </div>
+        {% endif %}
+
+
+<div class="delete-event-details">
+
+    <div class="delete-detail-card">
+
+        <span class="delete-detail-icon">
+        </span>
+
+        <div class="delete-detail-content">
+
+            <span class="delete-detail-label">
+                EVENT VENUE
+                📍
+            </span>
+
+            <strong>
+                {{ event.location }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="delete-detail-card">
+
+        <span class="delete-detail-icon">
+        </span>
+
+        <div class="delete-detail-content">
+
+            <span class="delete-detail-label">
+                EVENT DATE & TIME
+                📆
+            </span>
+
+            <strong>
+                {{ event.event_date|date:"M d, Y · g:i A" }}
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="delete-actions">
+
+                <a
+                    href="{% url 'event_list' %}"
+                    class="secondary-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="danger-button"
+                >
+                    Delete Event
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -24,6 +24,7 @@ class RegistrationForm(UserCreationForm):
 
     role = forms.ChoiceField(
         choices=[
+            (User.Role.ADMIN, "Admin"),
             (User.Role.ORGANIZER, "Organizer"),
             (User.Role.ATTENDEE, "Attendee"),
         ],
@@ -50,6 +51,29 @@ class RegistrationForm(UserCreationForm):
             )
 
         return email
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+
+        user.first_name = self.cleaned_data["first_name"]
+        user.last_name = self.cleaned_data["last_name"]
+        user.email = self.cleaned_data["email"]
+        user.role = self.cleaned_data["role"]
+
+        # Only users requesting the Admin role need approval.
+        if user.role == User.Role.ADMIN:
+            user.admin_access_status = "pending"
+        else:
+            user.admin_access_status = "approved"
+
+        # Never give Django admin permissions during public registration.
+        user.is_staff = False
+        user.is_superuser = False
+
+        if commit:
+            user.save()
+
+        return user
 
 
 class EmailAuthenticationForm(AuthenticationForm):

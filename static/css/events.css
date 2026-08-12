@@ -1,0 +1,1613 @@
+.events-page {
+    max-width: 1120px;
+
+    margin: 0 auto;
+}
+
+
+.events-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 38px;
+}
+
+
+.events-eyebrow {
+    margin: 0 0 8px;
+
+    color: var(--violet);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.2px;
+}
+
+
+.events-header h1 {
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(42px, 6vw, 62px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+}
+
+
+.events-subtitle {
+    max-width: 440px;
+
+    margin: 14px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.primary-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 21px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7257ff,
+            #6040df
+        );
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 25px rgba(114, 87, 255, 0.24);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.primary-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 32px rgba(114, 87, 255, 0.30);
+}
+
+
+.events-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+.event-card {
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: white;
+
+    border: 1px solid rgba(20,20,35,0.07);
+
+    box-shadow:
+        0 18px 50px rgba(25, 23, 45, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.event-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 28px 65px rgba(25, 23, 45, 0.13);
+}
+
+
+.event-poster {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd8ff,
+            #f0edf9
+        );
+}
+
+
+.event-poster img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.event-card:hover .event-poster img {
+    transform: scale(1.05);
+}
+
+
+.event-poster-placeholder {
+    display: grid;
+
+    place-items: center;
+
+    color: #8d8a99;
+
+    font-size: 13px;
+}
+
+
+.event-card-content {
+    padding: 21px;
+}
+
+
+.event-card-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 13px;
+}
+
+
+.event-status {
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    background: #f0edff;
+
+    color: #6348e9;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+
+.event-date {
+    color: #888b98;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.event-card h2 {
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.1;
+}
+
+
+.event-description {
+    min-height: 44px;
+
+    margin: 9px 0 19px;
+
+    color: #777a87;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+
+.event-details {
+    display: grid;
+
+    gap: 11px;
+
+    padding: 16px 0;
+
+    border-top: 1px solid var(--border);
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.event-detail {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    font-size: 11px;
+}
+
+
+.detail-label {
+    color: #9294a0;
+}
+
+
+.event-detail strong {
+    max-width: 58%;
+
+    color: #252633;
+
+    text-align: right;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.event-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+
+    margin-top: 17px;
+}
+
+
+.secondary-button,
+.danger-button {
+    min-height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.secondary-button {
+    border: 1px solid #ddd8ff;
+
+    background: #f7f5ff;
+
+    color: #6249df;
+}
+
+
+.secondary-button:hover {
+    background: #ece8ff;
+
+    transform: translateY(-1px);
+}
+
+
+.danger-button {
+    border: 1px solid #f5d8dc;
+
+    background: #fff5f6;
+
+    color: #c04c5a;
+}
+
+
+.danger-button:hover {
+    background: #ffe8eb;
+
+    transform: translateY(-1px);
+}
+
+
+.empty-events {
+    padding: 75px 30px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(20,20,35,0.07);
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf9ff
+        );
+
+    box-shadow:
+        0 25px 65px rgba(25, 23, 45, 0.08);
+}
+
+
+.empty-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 20px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #8065ff,
+            #5e41e2
+        );
+
+    color: white;
+
+    font-size: 27px;
+
+    box-shadow:
+        0 14px 30px rgba(114,87,255,0.25);
+}
+
+
+.empty-events h2 {
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 30px;
+}
+
+
+.empty-events p {
+    max-width: 470px;
+
+    margin: 9px auto 25px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+@media (max-width: 900px) {
+
+    .events-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .events-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 22px;
+    }
+
+    .events-header .primary-button {
+        width: 100%;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+```css
+/* =========================================================
+   PREMIUM EVENT FORM
+   ========================================================= */
+
+.event-form-page {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.form-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 34px;
+}
+
+.form-header .eyebrow {
+    margin: 0 0 9px;
+
+    color: var(--violet);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+}
+
+.form-header h1 {
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(40px, 6vw, 58px);
+    line-height: 0.98;
+    letter-spacing: -1.8px;
+}
+
+.page-subtitle {
+    max-width: 560px;
+
+    margin: 13px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.back-link {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 43px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: #656775;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+        0 7px 20px rgba(20, 20, 35, 0.05);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--violet);
+
+    border-color: #dcd6ff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 26px rgba(20, 20, 35, 0.08);
+}
+
+.event-form-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 42px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    box-shadow:
+        0 30px 80px rgba(24, 20, 50, 0.10),
+        0 2px 8px rgba(24, 20, 50, 0.04);
+}
+
+.event-form-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    top: -160px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(114, 87, 255, 0.10),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+.form-section {
+    position: relative;
+
+    padding: 0 0 34px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.form-section + .form-section {
+    padding-top: 34px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    color: #181a24;
+
+    font-size: 27px;
+    letter-spacing: -0.5px;
+}
+
+.section-heading p {
+    margin: 7px 0 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 21px 18px;
+}
+
+.form-group {
+    min-width: 0;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+
+    margin: 0 0 8px;
+
+    color: #30323d;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #e5e5eb;
+    border-radius: 12px;
+
+    background: #fbfbfd;
+
+    color: #181a24;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    min-height: 48px;
+
+    padding: 0 14px;
+}
+
+.form-group textarea {
+    min-height: 145px;
+
+    padding: 13px 14px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a4a6b0;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+    border-color: #d8d5e8;
+
+    background: #ffffff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--violet);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(114, 87, 255, 0.09);
+}
+
+.field-error {
+    margin-top: 7px;
+
+    color: #c04c5a;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.form-errors {
+    margin-bottom: 25px;
+
+    padding: 14px 17px;
+
+    border: 1px solid #f0d5d9;
+    border-radius: 13px;
+
+    background: #fff6f7;
+
+    color: #b74655;
+
+    font-size: 12px;
+}
+
+.form-errors p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   PREMIUM POSTER UPLOAD
+   ========================================================= */
+
+.poster-upload {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 250px;
+
+    padding: 30px;
+
+    border: 1px dashed #d7d2ed;
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(114, 87, 255, 0.08),
+            transparent 55%
+        ),
+        linear-gradient(
+            145deg,
+            #fcfbff,
+            #f8f7fc
+        );
+
+    text-align: center;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.poster-upload:hover {
+    border-color: #bcb2ec;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(114, 87, 255, 0.12),
+            transparent 55%
+        ),
+        #faf9ff;
+
+    transform: translateY(-1px);
+}
+
+.poster-upload::before {
+    content: "✦";
+
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 14px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #8065ff,
+            #5e41e2
+        );
+
+    color: white;
+
+    font-size: 24px;
+
+    box-shadow:
+        0 14px 30px rgba(114, 87, 255, 0.24);
+}
+
+.poster-upload label {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    margin-bottom: 8px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7257ff,
+            #6040df
+        );
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 24px rgba(114, 87, 255, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.poster-upload label:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(114, 87, 255, 0.30);
+}
+
+.poster-upload input[type="file"] {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.poster-upload::after {
+    content:
+        "JPG, JPEG, PNG or WEBP  •  Maximum 5 MB";
+
+    display: block;
+
+    color: #9294a0;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   CURRENT POSTER
+   ========================================================= */
+
+.current-poster {
+    display: grid;
+
+    grid-template-columns: 150px 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+
+    padding: 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: #fafafd;
+}
+
+.current-poster img {
+    width: 150px;
+    height: 95px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 25px rgba(20, 20, 35, 0.10);
+}
+
+.current-poster span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #30323d;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.current-poster p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.form-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 11px;
+
+    padding-top: 30px;
+}
+
+.form-actions .secondary-button {
+    min-height: 46px;
+
+    padding: 0 19px;
+
+    border: 1px solid #ddd8ff;
+    border-radius: 12px;
+
+    background: #f8f6ff;
+
+    color: #6249df;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.form-actions .secondary-button:hover {
+    background: #eeeaff;
+
+    transform: translateY(-2px);
+}
+
+.form-actions .primary-button {
+    min-height: 46px;
+
+    padding: 0 23px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE EVENT FORM
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .form-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .back-link {
+        width: 100%;
+    }
+
+    .event-form-card {
+        padding: 30px 22px;
+
+        border-radius: 22px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .event-form-page {
+        width: 100%;
+    }
+
+    .form-header h1 {
+        font-size: 40px;
+    }
+
+    .event-form-card {
+        padding: 25px 17px;
+
+        border-radius: 19px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .poster-upload {
+        min-height: 220px;
+
+        padding: 24px 16px;
+    }
+
+    .current-poster {
+        grid-template-columns: 1fr;
+    }
+
+    .current-poster img {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .primary-button,
+    .form-actions .secondary-button {
+        width: 100%;
+    }
+}
+```css
+/* =========================================================
+   PREMIUM DELETE EVENT INFO BUTTONS
+   ========================================================= */
+
+.delete-event-details {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin: 24px 0 28px;
+}
+
+.delete-detail-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 88px;
+
+    padding: 18px 22px;
+
+    border: 1px solid rgba(114, 87, 255, 0.12);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #fbfaff 100%
+        );
+
+    box-shadow:
+        0 12px 30px rgba(28, 24, 55, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.delete-detail-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+
+    width: 3px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8b72ff,
+            #c9a96e
+        );
+}
+
+.delete-detail-card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(114, 87, 255, 0.22);
+
+    box-shadow:
+        0 20px 42px rgba(28, 24, 55, 0.11);
+}
+
+.delete-detail-label {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-bottom: 7px;
+
+    color: #999aa6;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.delete-detail-label::first-letter {
+    color: #7055ed;
+}
+
+.delete-detail-content {
+    width: 100%;
+}
+
+.delete-detail-content strong {
+    display: block;
+
+    color: #1b1c27;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.2px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .delete-event-details {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .delete-detail-card {
+        min-height: 82px;
+
+        padding: 17px 20px;
+    }
+
+    .delete-detail-content strong {
+        font-size: 17px;
+    }
+}
+```css
+.poster-preview-image {
+    width: 120px;
+    height: 75px;
+}
+
+.poster-preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================================
+   PREMIUM DELETE EVENT HEADER & ACTIONS
+   ========================================================= */
+
+   .delete-card {
+    position: relative;
+    overflow: hidden;
+
+    max-width: 720px;
+    margin: 0 auto;
+
+    padding: 44px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(250, 249, 255, 0.96)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(24, 20, 50, 0.11),
+        0 3px 10px rgba(24, 20, 50, 0.04);
+
+    text-align: center;
+}
+
+.delete-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    top: -160px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(114, 87, 255, 0.10),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ---------- Warning Icon ---------- */
+
+.delete-icon {
+    position: relative;
+
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 20px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171525,
+            #30234d
+        );
+
+    color: #ffffff;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    box-shadow:
+        0 16px 35px rgba(35, 23, 70, 0.22);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.delete-icon::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border-radius: 23px;
+
+    border: 1px solid rgba(114, 87, 255, 0.15);
+
+    pointer-events: none;
+}
+
+
+/* ---------- Eyebrow ---------- */
+
+.delete-card .eyebrow {
+    position: relative;
+
+    margin: 0 0 9px;
+
+    color: #7055ed;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2.5px;
+}
+
+
+/* ---------- Main Heading ---------- */
+
+.delete-card h1 {
+    position: relative;
+
+    margin: 0;
+
+    color: #181925;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(34px, 5vw, 48px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+
+/* ---------- Description ---------- */
+
+.delete-description {
+    position: relative;
+
+    max-width: 500px;
+
+    margin: 14px auto 0;
+
+    color: #777985;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.delete-description strong {
+    color: #242532;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PREMIUM DELETE ACTIONS
+   ========================================================= */
+
+.delete-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+
+/* Cancel */
+
+.delete-actions .secondary-button {
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ded9f5;
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8f6ff
+        );
+
+    color: #6249df;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(35, 27, 70, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.delete-actions .secondary-button:hover {
+    transform: translateY(-2px);
+
+    background: #f1eeff;
+
+    box-shadow:
+        0 13px 27px rgba(35, 27, 70, 0.09);
+}
+
+
+/* Delete Event */
+
+.delete-actions .danger-button {
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(190, 76, 90, 0.25);
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d35b69,
+            #b84252
+        );
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 25px rgba(192, 76, 90, 0.22);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.delete-actions .danger-button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.04);
+
+    box-shadow:
+        0 15px 32px rgba(192, 76, 90, 0.30);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .delete-card {
+        padding: 32px 22px;
+
+        border-radius: 22px;
+    }
+
+    .delete-card h1 {
+        font-size: 36px;
+    }
+
+    .delete-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .delete-actions .danger-button,
+    .delete-actions .secondary-button {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   DELETE PAGE — FULL POSTER PREVIEW
+   ========================================================= */
+
+   .delete-poster {
+    width: 100%;
+    max-width: 520px;
+
+    margin: 28px auto 0;
+
+    padding: 10px;
+
+    border: 1px solid rgba(114, 87, 255, 0.12);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf9ff
+        );
+
+    box-shadow:
+        0 18px 45px rgba(25, 23, 45, 0.10);
+
+    overflow: hidden;
+}
+
+.delete-poster img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    max-height: 420px;
+
+    object-fit: contain;
+
+    border-radius: 13px;
+}

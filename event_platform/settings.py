@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "accounts",
+    "events",
 ]
 
 MIDDLEWARE = [
@@ -75,9 +76,13 @@ WSGI_APPLICATION = 'event_platform.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "event_platform",
+        "USER": "root",
+        "PASSWORD": "Admin0789",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
     }
 }
 
@@ -123,6 +128,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
