@@ -157,7 +157,11 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f'{self.attendee} → {self.event} ({self.quantity})'
-
+        
+    @property
+    def is_upcoming(self):
+        """True while the linked event's date/time hasn't passed yet."""
+        return self.event.date >= timezone.now()
 
 class EventBooking(models.Model):
     user = models.ForeignKey(
